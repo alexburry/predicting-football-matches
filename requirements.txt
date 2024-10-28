@@ -1,0 +1,11 @@
+pandas
+numpy
+matplotlib
+scikit-learn
+tensorflow
+tensorflow-docs
+altair
+seaborn
+joblib
+pyqt6
+lxml

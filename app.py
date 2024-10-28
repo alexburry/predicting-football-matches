@@ -178,7 +178,7 @@ class PredModel:
         self.currentYearData = self.scaleData(matchesData)
         print("Data Loaded")
 
-        self.predictingModel = joblib.load('project\models\\randomtree.sav')
+        self.predictingModel = joblib.load('./models/randomtree.sav')
         # self.predictingModel = joblib.load('project\models\\logisticreg.sav')
         print("Model loaded")
 
