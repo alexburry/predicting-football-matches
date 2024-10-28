@@ -63,7 +63,7 @@ for i, year in enumerate(years) :
 # Get match data from CSV file
 shortYears = ['2017-18', '2018-19', '2019-20', '2020-21', '2021-22']
 
-resultsMax = pd.read_csv("data/results.csv", encoding="ANSI")
+resultsMax = pd.read_csv("./data/results.csv", encoding="ANSI")
 resultsMax = resultsMax.drop(columns=['DateTime', 'Referee'])
 results = resultsMax.drop(columns=['FTHG','FTAG','HTHG','HTAG','HTR','HS','AS','HST','AST','HC','AC','HF','AF','HY','AY','HR','AR'])
 results['FTR'] = results['FTR'].replace({'H':0, 'D':1, 'A':2})
@@ -75,7 +75,7 @@ shortResults = results[results['Season'].isin(shortYears)]
 # Combine the two datasets
 teamStats = {}
 for i, year in enumerate(years) :
-    teamStats[shortYears[i]] = pd.read_csv("data/" + year + '_teamstats.csv')
+    teamStats[shortYears[i]] = pd.read_csv("./data/" + year + '_teamstats.csv')
     teamStats[shortYears[i]] = teamStats[shortYears[i]].drop(columns=['Unnamed: 0'])
     teamStats[shortYears[i]]['Season'] = shortYears[i] 
 
@@ -94,4 +94,4 @@ awayTeamConcat = pd.concat(awayTeamStats, ignore_index=True)
 fulldata = shortResults
 fulldata = fulldata.merge(homeTeamConcat, how='left', left_on=['HomeTeam','Season'], right_on = ['HomeTeam','Season'])
 fulldata = fulldata.merge(awayTeamConcat, how='left', left_on=['AwayTeam','Season'], right_on = ['AwayTeam','Season'])
-fulldata.to_csv("data/fulldata.csv")
+fulldata.to_csv("./data/fulldata.csv")
